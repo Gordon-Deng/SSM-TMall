@@ -2,12 +2,19 @@ package com.gordon.tmall.controller;
 
 import com.gordon.tmall.pojo.Category;
 import com.gordon.tmall.service.CategoryService;
+import com.gordon.tmall.util.ImageUtil;
 import com.gordon.tmall.util.Page;
+import com.gordon.tmall.util.UploadedImageFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.imageio.ImageIO;
+import javax.servlet.http.HttpSession;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 
@@ -34,6 +41,35 @@ public class CategoryController {
         model.addAttribute("cs", cs);
         model.addAttribute("page", page);
         return "admin/listCategory";
+    }
+
+
+    /**
+     * add方法映射路径admin_category_add的访问
+     * @param category
+     * @param session
+     * @param uploadedImageFile
+     * @return
+     * @throws IOException
+     */
+    @RequestMapping("admin_category_add")
+    public String add(Category category, HttpSession session, UploadedImageFile uploadedImageFile) throws IOException {
+        
+        //参数 Category category接受页面提交的分类名称
+        categoryService.add(category);
+        //参数 session 用于在后续获取当前应用的路径
+        File imageFolder= new File(session.getServletContext().getRealPath("img/category"));
+        //图片不入库，拼接属性ID和图片名成一个新文件，供Jsp解析
+        File file = new File(imageFolder,category.getId()+".jpg");
+        if(!file.getParentFile().exists()) {
+            file.getParentFile().mkdirs();
+        }
+        
+        //通过UploadedImageFile 把浏览器传递过来的图片保存在上述指定的位置
+        uploadedImageFile.getImage().transferTo(file);
+        BufferedImage img = ImageUtil.change2jpg(file);
+        ImageIO.write(img, "jpg", file);
+        return "redirect:/admin_category_list";
     }
     
 }

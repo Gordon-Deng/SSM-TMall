@@ -23,6 +23,7 @@ public class Page {
     public Page() {
         count = defaultCount;
     }
+    
     public void setStart(int start) {
         this.start = start;
     }
@@ -61,13 +62,13 @@ public class Page {
     }
 
     public boolean isHasPreviouse(){
-        if(start==0) {
+        if(start == 0) {
             return false;
         }
             return true;
     }
     public boolean isHasNext(){
-        if(start==getLast()) {
+        if(start == getLast()) {
             return false;
         }
         return true;

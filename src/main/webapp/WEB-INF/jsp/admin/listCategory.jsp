@@ -1,3 +1,4 @@
+<%--contentType="text/html; charset=UTF-8"告诉浏览器提交数据的时候，使用UTF-8编码--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" import="java.util.*"%>
 
@@ -44,6 +45,7 @@
 
                 <tr>
                     <td>${c.id}</td>
+                    <%--解析图片，格式都为(id).jpg--%>
                     <td><img height="40px" src="img/category/${c.id}.jpg"></td>
                     <td>${c.name}</td>
 

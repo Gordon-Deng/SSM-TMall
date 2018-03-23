@@ -4,15 +4,18 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.gordon.tmall.mapper.CategoryMapper">
+    <!--SQL语句要小写-->
     <select id="list" resultType="Category">
-        select * from category order by id desc
-
+        SELECT * FROM category ORDER BY id DESC 
         <if test="start!=null and count!=null">
             limit #{start},#{count}
         </if>
-    </select>
 
-    <select id="total" resultType="int">
-        select count(*) from category
     </select>
+    <select id="total" resultType="int">
+        SELECT COUNT(*) FROM category
+    </select>
+    <insert id="add"  keyProperty="id"  useGeneratedKeys="true" parameterType="Category" >
+        INSERT INTO category ( name ) VALUES (#{name})
+    </insert>
 </mapper>

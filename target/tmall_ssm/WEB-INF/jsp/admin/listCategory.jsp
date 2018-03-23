@@ -1,3 +1,4 @@
+<%--contentType="text/html; charset=UTF-8"告诉浏览器提交数据的时候，使用UTF-8编码--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" import="java.util.*"%>
 
@@ -44,6 +45,7 @@
 
                 <tr>
                     <td>${c.id}</td>
+                    <%--解析图片，格式都为(id).jpg--%>
                     <td><img height="40px" src="img/category/${c.id}.jpg"></td>
                     <td>${c.name}</td>
 
@@ -65,6 +67,8 @@
     <div class="panel panel-warning addDiv">
         <div class="panel-heading">新增分类</div>
         <div class="panel-body">
+            <%--method="post" 用于保证中文的正确提交--%>
+            <%--enctype="multipart/form-data"，确保能上传文件--%>
             <form method="post" id="addForm" action="admin_category_add" enctype="multipart/form-data">
                 <table class="addTable">
                     <tr>
@@ -74,6 +78,7 @@
                     <tr>
                         <td>分类圖片</td>
                         <td>
+                            <%--accept="image/*"限制只能上传图片--%>
                             <input id="categoryPic" accept="image/*" type="file" name="image" />
                         </td>
                     </tr>

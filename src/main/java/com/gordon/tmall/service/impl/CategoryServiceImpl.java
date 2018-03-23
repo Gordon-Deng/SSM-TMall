@@ -12,6 +12,7 @@ import java.util.List;
 /**
  * 注解@Service声明当前类是一个Service类
  * 通过自动装配@Autowired引入CategoryMapper ，在list方法中调用CategoryMapper 的list方法.
+ * @author gordon
  */
 @Service
 public class CategoryServiceImpl implements CategoryService{
@@ -27,4 +28,11 @@ public class CategoryServiceImpl implements CategoryService{
     public int total() {
         return categoryMapper.total();
     }
+
+    @Override
+    public void add(Category category) {
+        categoryMapper.add(category);
+    }
+
+
 }

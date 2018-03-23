@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="tmall_ssm@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="tmall_ssm">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="Demo_Mybatis"/>
+    <schema id="4" parent="1" name="information_schema"/>
+    <schema id="5" parent="1" name="mysql"/>
+    <schema id="6" parent="1" name="performance_schema"/>
+    <schema id="7" parent="1" name="sys"/>
+    <schema id="8" parent="1" name="tmall"/>
+    <schema id="9" parent="1" name="ustc"/>
+    <table id="10" parent="2" name="category"/>
+    <table id="11" parent="2" name="order_"/>
+    <table id="12" parent="2" name="orderitem"/>
+    <table id="13" parent="2" name="product"/>
+    <table id="14" parent="2" name="productimage"/>
+    <table id="15" parent="2" name="property"/>
+    <table id="16" parent="2" name="propertyvalue"/>
+    <table id="17" parent="2" name="review"/>
+    <table id="18" parent="2" name="user"/>
+    <column id="19" parent="10" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="20" parent="10" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="21" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="22" parent="11" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="23" parent="11" name="orderCode">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="24" parent="11" name="address">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="25" parent="11" name="post">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="26" parent="11" name="receiver">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="27" parent="11" name="mobile">
+      <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="28" parent="11" name="userMessage">
+      <Position>7</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="29" parent="11" name="createDate">
+      <Position>8</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="30" parent="11" name="payDate">
+      <Position>9</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="31" parent="11" name="deliveryDate">
+      <Position>10</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="32" parent="11" name="confirmDate">
+      <Position>11</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="33" parent="11" name="uid">
+      <Position>12</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="34" parent="11" name="status">
+      <Position>13</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <index id="35" parent="11" name="fk_order_user">
+      <ColNames>uid</ColNames>
+    </index>
+    <key id="36" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="37" parent="11" name="fk_order_user">
+      <ColNames>uid</ColNames>
+      <RefSchemaName>tmall_ssm</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="38" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="39" parent="12" name="pid">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="40" parent="12" name="oid">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="41" parent="12" name="uid">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="42" parent="12" name="number">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="43" parent="12" name="fk_orderitem_order">
+      <ColNames>oid</ColNames>
+    </index>
+    <index id="44" parent="12" name="fk_orderitem_product">
+      <ColNames>pid</ColNames>
+    </index>
+    <index id="45" parent="12" name="fk_orderitem_user">
+      <ColNames>uid</ColNames>
+    </index>
+    <key id="46" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="47" parent="12" name="fk_orderitem_product">
+      <ColNames>pid</ColNames>
+      <RefSchemaName>tmall_ssm</RefSchemaName>
+      <RefTableName>product</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="48" parent="12" name="fk_orderitem_order">
+      <ColNames>oid</ColNames>
+      <RefSchemaName>tmall_ssm</RefSchemaName>
+      <RefTableName>order_</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="49" parent="12" name="fk_orderitem_user">
+      <ColNames>uid</ColNames>
+      <RefSchemaName>tmall_ssm</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="50" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="51" parent="13" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="52" parent="13" name="subTitle">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="53" parent="13" name="originalPrice">
+      <Position>4</Position>
+      <DataType>float|0</DataType>
+    </column>
+    <column id="54" parent="13" name="promotePrice">
+      <Position>5</Position>
+      <DataType>float|0</DataType>
+    </column>
+    <column id="55" parent="13" name="stock">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="56" parent="13" name="cid">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="57" parent="13" name="createDate">
+      <Position>8</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <index id="58" parent="13" name="fk_product_category">
+      <ColNames>cid</ColNames>
+    </index>
+    <key id="59" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="60" parent="13" name="fk_product_category">
+      <ColNames>cid</ColNames>
+      <RefSchemaName>tmall_ssm</RefSchemaName>
+      <RefTableName>category</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="61" parent="14" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="62" parent="14" name="pid">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="63" parent="14" name="type">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <index id="64" parent="14" name="fk_productimage_product">
+      <ColNames>pid</ColNames>
+    </index>
+    <key id="65" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="66" parent="14" name="fk_productimage_product">
+      <ColNames>pid</ColNames>
+      <RefSchemaName>tmall_ssm</RefSchemaName>
+      <RefTableName>product</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="67" parent="15" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="68" parent="15" name="cid">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="69" parent="15" name="name">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <index id="70" parent="15" name="fk_property_category">
+      <ColNames>cid</ColNames>
+    </index>
+    <key id="71" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="72" parent="15" name="fk_property_category">
+      <ColNames>cid</ColNames>
+      <RefSchemaName>tmall_ssm</RefSchemaName>
+      <RefTableName>category</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="73" parent="16" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="74" parent="16" name="pid">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="75" parent="16" name="ptid">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="76" parent="16" name="value">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <index id="77" parent="16" name="fk_propertyvalue_product">
+      <ColNames>pid</ColNames>
+    </index>
+    <index id="78" parent="16" name="fk_propertyvalue_property">
+      <ColNames>ptid</ColNames>
+    </index>
+    <key id="79" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="80" parent="16" name="fk_propertyvalue_product">
+      <ColNames>pid</ColNames>
+      <RefSchemaName>tmall_ssm</RefSchemaName>
+      <RefTableName>product</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="81" parent="16" name="fk_propertyvalue_property">
+      <ColNames>ptid</ColNames>
+      <RefSchemaName>tmall_ssm</RefSchemaName>
+      <RefTableName>property</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="82" parent="17" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="83" parent="17" name="content">
+      <Position>2</Position>
+      <DataType>varchar(4000)|0</DataType>
+    </column>
+    <column id="84" parent="17" name="uid">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="85" parent="17" name="pid">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="86" parent="17" name="createDate">
+      <Position>5</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <index id="87" parent="17" name="fk_review_product">
+      <ColNames>pid</ColNames>
+    </index>
+    <index id="88" parent="17" name="fk_review_user">
+      <ColNames>uid</ColNames>
+    </index>
+    <key id="89" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="90" parent="17" name="fk_review_user">
+      <ColNames>uid</ColNames>
+      <RefSchemaName>tmall_ssm</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="91" parent="17" name="fk_review_product">
+      <ColNames>pid</ColNames>
+      <RefSchemaName>tmall_ssm</RefSchemaName>
+      <RefTableName>product</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="92" parent="18" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="93" parent="18" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="94" parent="18" name="password">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="95" parent="18" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
