@@ -20,4 +20,8 @@ public interface CategoryMapper {
     void add(Category category);
     
     void delete(int id);
+
+    Category edit(int id);
+
+    void update(Category category);
 }

@@ -12,6 +12,8 @@
         </if>
 
     </select>
+    
+    <!--count()之间别加上空格-->
     <select id="total" resultType="int">
         SELECT COUNT(*) FROM category
     </select>
@@ -21,6 +23,14 @@
     </insert>
 
     <delete id="delete">
-        delete from category where id= #{id}
+        DELETE FROM category WHERE id= #{id}
     </delete>
+    
+    <select id="edit" resultType="Category">
+        SELECT * FROM category WHERE id = #{id}
+    </select>
+
+    <update id="update" parameterType="Category" >
+        update category set name=#{name} where id=#{id}
+    </update>
 </mapper>
