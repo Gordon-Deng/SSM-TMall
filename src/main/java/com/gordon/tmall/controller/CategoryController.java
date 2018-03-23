@@ -28,10 +28,13 @@ import java.util.List;
 public class CategoryController {
     @Autowired
     CategoryService categoryService;
-
+    
     /**
      * 注解@RequestMapping("admin_category_list") 映射admin_category_list路径的访问
      * 在list方法中，通过categoryService.list()获取所有的Category对象，然后放在"cs"中，并服务端跳转到 “admin/listCategory” 视图。
+     * @param model
+     * @param page
+     * @return
      */
     @RequestMapping("admin_category_list")
     public String list(Model model,Page page){
@@ -69,6 +72,28 @@ public class CategoryController {
         uploadedImageFile.getImage().transferTo(file);
         BufferedImage img = ImageUtil.change2jpg(file);
         ImageIO.write(img, "jpg", file);
+        return "redirect:/admin_category_list";
+    }
+
+
+    /**
+     * 映射路径admin_category_delete
+     * @param id
+     * @param session
+     * @return
+     * @throws IOException
+     */
+    @RequestMapping("admin_category_delete")
+    public String delete(int id, HttpSession session)throws IOException{
+        categoryService.delete(id);
+        
+        //通过session获取ControllerContext然后获取分类图片位置，接着删除分类图片
+        File imageFolder = new File(session.getServletContext().getRealPath("img/category"));
+        //拼接图片名
+        File file = new File(imageFolder, id+".jpg");
+        file.delete();
+        
+        //客户端跳转到 admin_category_list
         return "redirect:/admin_category_list";
     }
     
