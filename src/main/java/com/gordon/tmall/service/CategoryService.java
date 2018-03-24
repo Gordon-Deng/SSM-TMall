@@ -1,7 +1,6 @@
 package com.gordon.tmall.service;
 
 import com.gordon.tmall.pojo.Category;
-import com.gordon.tmall.util.Page;
 
 import java.util.List;
 
@@ -10,9 +9,14 @@ import java.util.List;
  */
 public interface CategoryService {
     
-    List<Category> list(Page page);
     
-    int total();
+    //项目重构
+    // 去除多余的public List<Category> list(Page page);
+    // 去除total()
+    
+    List<Category> list();
+    
+    //int total();
     
     void add(Category category);
     

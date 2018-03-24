@@ -13,9 +13,11 @@ public interface CategoryMapper {
      * @param page
      * @return List<Category>
      */
-    public List<Category> list(Page page);
     
-    public int total();
+    //项目重构去除多余的public List<Category> list(Page page);
+    List<Category> list();
+    
+    //public int total();
     
     void add(Category category);
     
@@ -24,4 +26,5 @@ public interface CategoryMapper {
     Category edit(int id);
 
     void update(Category category);
+    
 }

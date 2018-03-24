@@ -19,14 +19,21 @@ public class CategoryServiceImpl implements CategoryService{
     @Autowired
     CategoryMapper categoryMapper;
 
+    //项目重构list(Page page)解偶
+    //@Override
+    //public List<Category> list(Page page) {
+    //    return categoryMapper.list(page);
+    //}
+    
+    //去掉total()方法
+    //@Override
+    //public int total() {
+    //    return categoryMapper.total();
+    //}
+    
     @Override
-    public List<Category> list(Page page) {
-        return categoryMapper.list(page);
-    }
-
-    @Override
-    public int total() {
-        return categoryMapper.total();
+    public List<Category> list() {
+        return categoryMapper.list();
     }
 
     @Override
