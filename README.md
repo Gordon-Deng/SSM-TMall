@@ -1,6 +1,7 @@
 # SSM-TMall
 基于spring + spring mvc + mybatis天猫商城模拟
 
+![](http://how2j.cn/img/site/step/6451.png)
 
 ## 2018/2/11
 

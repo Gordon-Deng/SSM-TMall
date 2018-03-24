@@ -108,7 +108,7 @@ public class CategoryController {
 
     @RequestMapping("admin_category_edit")
     public String edit(int id, Model model)throws IOException{
-        Category category = categoryService.edit(id);
+        Category category = categoryService.get(id);
         
         //model.addAttribute()想指定文件注入元素
         model.addAttribute("c", category);

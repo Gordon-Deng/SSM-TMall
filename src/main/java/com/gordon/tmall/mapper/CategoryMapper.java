@@ -1,30 +1,21 @@
 package com.gordon.tmall.mapper;
 
 import com.gordon.tmall.pojo.Category;
-import com.gordon.tmall.util.Page;
-
+import com.gordon.tmall.pojo.CategoryExample;
 import java.util.List;
 
-/**
- * @author gordon
- */
 public interface CategoryMapper {
-    /**
-     * @param page
-     * @return List<Category>
-     */
-    
-    //项目重构去除多余的public List<Category> list(Page page);
-    List<Category> list();
-    
-    //public int total();
-    
-    void add(Category category);
-    
-    void delete(int id);
+    int deleteByPrimaryKey(Integer id);
 
-    Category edit(int id);
+    int insert(Category record);
 
-    void update(Category category);
-    
+    int insertSelective(Category record);
+
+    List<Category> selectByExample(CategoryExample example);
+
+    Category selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(Category record);
+
+    int updateByPrimaryKey(Category record);
 }

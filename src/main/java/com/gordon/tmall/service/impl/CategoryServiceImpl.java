@@ -2,6 +2,7 @@ package com.gordon.tmall.service.impl;
 
 import com.gordon.tmall.mapper.CategoryMapper;
 import com.gordon.tmall.pojo.Category;
+import com.gordon.tmall.pojo.CategoryExample;
 import com.gordon.tmall.service.CategoryService;
 import com.gordon.tmall.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,30 +31,41 @@ public class CategoryServiceImpl implements CategoryService{
     //public int total() {
     //    return categoryMapper.total();
     //}
-    
+
+
+    /**
+     * 传递一个example对象，这个对象指定按照id倒排序来查询
+     */
     @Override
     public List<Category> list() {
-        return categoryMapper.list();
+        
+        CategoryExample example =new CategoryExample();
+        example.setOrderByClause("id desc");
+        return categoryMapper.selectByExample(example);
     }
 
     @Override
     public void add(Category category) {
-        categoryMapper.add(category);
+        categoryMapper.insert(category);
     }
     
     @Override
     public void delete(int id){
-        categoryMapper.delete(id);
+        categoryMapper.deleteByPrimaryKey(id);
     }
 
     @Override
-    public Category edit(int id) {
-        return categoryMapper.edit(id);
+    public Category get(int id) {
+        return categoryMapper.selectByPrimaryKey(id);
     }
-
+    
+    /**
+     * updateByPrimaryKeySelective，其作用是只修改变化了的字段，未变化的字段就不修改了。
+     * @param category
+     */
     @Override
     public void update(Category category) {
-        categoryMapper.update(category);
+        categoryMapper.updateByPrimaryKeySelective(category);
     }
 
 
