@@ -22,8 +22,7 @@ public class Product {
     private Integer cid;
 
     private Date createDate;
-
-    /*非数据库字段*/
+    
     private Category category;
 
     private ProductImage firstProductImage;
