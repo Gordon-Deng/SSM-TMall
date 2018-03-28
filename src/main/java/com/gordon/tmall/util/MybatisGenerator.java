@@ -44,7 +44,7 @@ public class MybatisGenerator {
         boolean overwrite = true;
         
         //取得配置文件
-        InputStream is= MybatisGenerator.class.getClassLoader().getResource("generatorConfig.xml").openStream();
+        InputStream is = MybatisGenerator.class.getClassLoader().getResource("generatorConfig.xml").openStream();
         ConfigurationParser cp = new ConfigurationParser(warnings);
         Configuration config = cp.parseConfiguration(is);
         is.close();
